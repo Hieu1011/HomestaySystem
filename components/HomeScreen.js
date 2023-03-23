@@ -70,10 +70,18 @@ const Home = ({navigation}) => {
     images.image4,
   ];
 
-  const SalesOffCard = ({hotels}) => {
+  const SalesOffCard = ({hotel}) => {
     return (
       <View style={styles.salesOffCard}>
-        <Image style={styles.salesOffCardImage} source={hotels.image} />
+        <View style={styles.itemRating}>
+          <Ionicons name="star" size={sizes.iconTiny} color={colors.yellow} />
+          <Text style={styles.itemRatingText}>5.0</Text>
+        </View>
+        <Image style={styles.salesOffCardImage} source={hotel.image} />
+        <View style={styles.itemInfor}>
+          <Text style={styles.itemInforName}>{hotel.name}</Text>
+          <Text style={styles.itemInforPrice}>{hotel.price}</Text>
+        </View>
       </View>
     );
   };
@@ -161,12 +169,8 @@ const Home = ({navigation}) => {
           data={hotels}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingLeft: 20,
-            marginTop: 20,
-            paddingBottom: 30,
-          }}
-          renderItem={({item}) => <SalesOffCard hotels={item} />}
+          contentContainerStyle={styles.flatList}
+          renderItem={({item}) => <SalesOffCard hotel={item} />}
         />
       </ScrollView>
     </SafeAreaView>
@@ -178,6 +182,8 @@ const styles = StyleSheet.create({
     flex: 1,
     color: colors.white,
   },
+
+  //Header
   menuWrapper: {
     paddingHorizontal: 15,
     paddingTop: 15,
@@ -194,6 +200,8 @@ const styles = StyleSheet.create({
     height: 32,
     width: 32,
   },
+
+  //SearchBar
   searchBar: {
     borderRadius: 8,
     borderColor: colors.dark,
@@ -215,6 +223,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginHorizontal: 10,
   },
+
+  //Location
   locationWrapper: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
@@ -235,6 +245,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Black',
     fontSize: 20,
   },
+
+  //Filters
   categoryContainer: {
     marginTop: 10,
     marginHorizontal: 40,
@@ -259,6 +271,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     textAlignVertical: 'bottom',
   },
+
+  //Slider
   boxSlider: {
     position: 'absolute',
     alignItems: 'center',
@@ -274,6 +288,13 @@ const styles = StyleSheet.create({
     height: 14,
     borderRadius: 15,
     marginHorizontal: -5,
+  },
+
+  //SalesOff
+  textTitle: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 21,
+    color: colors.dark,
   },
   salesOffWrapper: {
     marginTop: 20,
@@ -296,10 +317,36 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
   },
-  textTitle: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 21,
-    color: colors.dark,
+  flatList: {
+    paddingLeft: 20,
+    marginTop: 20,
+    paddingBottom: 30,
+  },
+  itemRating: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    zIndex: 1,
+    flexDirection: 'row',
+  },
+  itemRatingText: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  itemInfor: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+  itemInforName: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: colors.primary,
+  },
+  itemInforPrice: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: colors.darkgray,
   },
 });
 export default Home;

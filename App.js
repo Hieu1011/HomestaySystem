@@ -6,8 +6,8 @@ import FastBooking from './components/FastBookingScreen';
 import Rewards from './components/RewardsScreen';
 import Account from './components/AccountScreen';
 import Notification from './components/NotiScreen';
-import LoginScreen from './components/SignUpScreen';
-import SignInScreen from './components/SignInScreen';
+import LoginScreen from './components/SignInScreen';
+import SignUpScreen from './components/SignUpScreen';
 
 import colors from './assets/consts/colors';
 import sizes from './assets/consts/sizes';
@@ -138,8 +138,16 @@ const App = () => {
   return (
     <NavigationContainer theme={myTheme}>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUpScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}

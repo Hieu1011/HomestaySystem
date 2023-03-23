@@ -1,15 +1,68 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TextInput} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Image,
+  Alert,
+} from 'react-native';
+import images from '../assets/images';
+import colors from '../assets/consts/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import IconIoni from 'react-native-vector-icons/Ionicons';
 
-function SignInScreen() {
+export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    checkLoginStatus();
+  }, []);
+
+  const checkLoginStatus = async () => {
+    const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+    }
+  };
+  const LoginIn = async () => {
+    navigation.navigate('TabNavigator');
+  };
+  const handleLogin = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      await AsyncStorage.setItem('isLoggedIn', 'true');
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
-      <Text style={styles.title}>Sign up</Text>
-      <View style={styles.samerow}>
+    <View style={styles.container}>
+      <View
+        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5}}>
+        <Image
+          source={images.logo}
+          style={{height: 100, width: 100, marginRight: -10}}
+          resizeMode="contain"
+        />
+      </View>
+      <Text
+        style={{
+          fontSize: 20,
+          color: '#878787',
+          fontWeight: '300',
+          marginBottom: 25,
+        }}>
+        Wellcome back you've been missed
+      </Text>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Icon name="envelope" size={20} marginRight={10} />
         <TextInput
           style={styles.input}
@@ -19,62 +72,26 @@ function SignInScreen() {
           onChangeText={text => setEmail(text)}
         />
       </View>
-      <View style={styles.samerow}>
-        <Icon name="user" size={20} marginRight={10} />
-        <TextInput
-          style={styles.input}
-          placeholder="Full name"
-          value={email}
-          keyboardType="default"
-          onChangeText={text => setEmail(text)}
-        />
-      </View>
-      <View style={styles.samerow}>
-        <Icon name="phone" size={20} marginRight={10} />
-        <TextInput
-          style={styles.input}
-          placeholder="Your mobile phone"
-          value={email}
-          keyboardType="number-pad"
-          onChangeText={text => setEmail(text)}
-        />
-      </View>
 
-      <View style={styles.samerow}>
-        <Icon name="lock" size={20} marginRight={10} />
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Icon name="lock" size={24} marginRight={10} />
         <TextInput
           style={styles.input}
-          placeholder="New password"
-          value={email}
+          placeholder="Password"
           secureTextEntry
-          onChangeText={text => setEmail(text)}
+          value={password}
+          onChangeText={text => setPassword(text)}
         />
       </View>
-
-      <View style={styles.samerow}>
-        <IconIoni name="lock-closed-outline" size={20} marginRight={10} />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm your new password"
-          value={email}
-          secureTextEntry
-          onChangeText={text => setEmail(text)}
-        />
-      </View>
-
-      <View style={styles.samerow}>
-        <Text style={{marginStart: 12, marginTop: 5}}>
-          {' '}
-          By signing up, you're agree to our{' '}
-        </Text>
-        <Text style={{color: '#005792'}}> Terms & Conditions </Text>
-        <Text> and </Text>
-        <Text style={{color: '#005792', marginStart: 12}}>
-          {' '}
-          Privacy Policy{' '}
-        </Text>
-      </View>
-
+      <Text
+        style={{
+          color: colors.primary,
+          paddingLeft: 230,
+          fontSize: 13,
+          marginBottom: 10,
+        }}>
+        Forgot Password ?
+      </Text>
       <Button
         mode="contained"
         style={{
@@ -82,30 +99,68 @@ function SignInScreen() {
           width: '80%',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#00204A',
-          marginTop: 20,
-        }}>
-        Sign up
+          backgroundColor: colors.dark,
+        }}
+        onPress={LoginIn}
+        disabled={isLoading}>
+        {isLoading ? (
+          <Text style={styles.buttonText}>Loading...</Text>
+        ) : (
+          <Text style={styles.buttonText}>Login</Text>
+        )}
       </Button>
-
-      <View style={styles.samerow}>
-        <Text style={{marginStart: 12, marginTop: 5}}> Joined us before? </Text>
-        <Text style={{color: '#005792'}}> Login </Text>
+      <Text
+        style={{color: 'black', fontSize: 15, marginBottom: 10, marginTop: 10}}>
+        Or
+      </Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingLeft: 15,
+          marginBottom: 120,
+        }}>
+        <Icon.Button
+          name="facebook"
+          size={24}
+          marginRight={15}
+          color="#4267B2"
+          backgroundColor="transparent"
+          onPress={() => alert('Login face')}
+        />
+        <Icon.Button
+          name="google"
+          size={24}
+          marginRight={10}
+          color="#DB4437"
+          backgroundColor="transparent"
+          onPress={() => alert('Login Google')}
+        />
+      </View>
+      <View
+        style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 15}}>
+        <Text style={{color: '#9a9a9a', fontSize: 13, marginRight: 5}}>
+          Not a remember?
+        </Text>
+        <Text style={{color: colors.primary, fontSize: 13}} onPress={LoginIn}>
+          Register Now
+        </Text>
       </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#00204A',
-  },
-  samerow: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   input: {
     width: '80%',
@@ -115,7 +170,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingTop: 25,
     paddingLeft: 10,
-    marginBottom: 10,
+    marginBottom: 20,
+  },
+  button: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#007bff',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
-export default SignInScreen;
