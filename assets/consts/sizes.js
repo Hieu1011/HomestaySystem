@@ -7,9 +7,9 @@ const sizes = {
   fontExtraLarge: 20,
 
   // icon sizes
-  iconTiny: 20,
+  iconTiny: 18,
   iconSmall: 28,
-  iconMedium: 30,
+  iconMedium: 32,
   iconLarge: 36,
 
   // logo image
