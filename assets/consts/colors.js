@@ -12,6 +12,7 @@ const colors = {
   gray2: '#C7C7C7',
   lightgray: '#D9D9D9',
   yellow: '#FCB446',
+  red: '#C44444',
 };
 
 export default colors;

@@ -7,6 +7,7 @@ import {
   Image,
   StatusBar,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import colors from '../assets/consts/colors';
@@ -72,17 +73,28 @@ const Home = ({navigation}) => {
 
   const SalesOffCard = ({hotel}) => {
     return (
-      <View style={styles.salesOffCard}>
-        <View style={styles.itemRating}>
-          <Ionicons name="star" size={sizes.iconTiny} color={colors.yellow} />
-          <Text style={styles.itemRatingText}>5.0</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('DetailHomestay', hotel)}>
+        <View style={styles.salesOffCard}>
+          <View style={styles.itemRating}>
+            <Text style={styles.itemRatingText}>5.0</Text>
+            <Ionicons name="star" size={sizes.iconTiny} color={colors.yellow} />
+          </View>
+          <Image style={styles.salesOffCardImage} source={hotel.image} />
+          <View style={styles.itemInfor}>
+            <Text style={styles.itemInforName}>{hotel.name}</Text>
+            <Text style={styles.itemInforPrice}>{hotel.price}</Text>
+          </View>
+          <View style={styles.itemLocation}>
+            <Text style={styles.itemLocationText}>{hotel.location}</Text>
+            <Ionicons
+              name="location-sharp"
+              size={sizes.iconTiny}
+              color={colors.gray}
+            />
+          </View>
         </View>
-        <Image style={styles.salesOffCardImage} source={hotel.image} />
-        <View style={styles.itemInfor}>
-          <Text style={styles.itemInforName}>{hotel.name}</Text>
-          <Text style={styles.itemInforPrice}>{hotel.price}</Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -244,7 +256,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.dark,
     fontFamily: 'Lato-Black',
-    fontSize: 20,
+    fontSize: sizes.fontExtraLarge,
   },
 
   //Filters
@@ -266,7 +278,7 @@ const styles = StyleSheet.create({
   iconName: {
     fontFamily: 'Lato-Regular',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: sizes.fontMedium,
     // fontWeight: '700',
     color: colors.black,
     marginTop: 15,
@@ -294,7 +306,7 @@ const styles = StyleSheet.create({
   //SalesOff
   textTitle: {
     fontFamily: 'Inter-Bold',
-    fontSize: 21,
+    fontSize: sizes.fontExtraLarge,
     color: colors.dark,
   },
   salesOffWrapper: {
@@ -303,9 +315,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
+  flatList: {
+    marginTop: 8,
+    paddingLeft: 20,
+    paddingBottom: 30,
+  },
   salesOffCard: {
-    height: 150,
-    width: 150,
+    height: 250,
+    width: 300,
     backgroundColor: colors.white,
     elevation: 15,
     marginHorizontal: 10,
@@ -313,40 +330,45 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   salesOffCardImage: {
-    height: 100,
+    height: 150,
     width: '100%',
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
   },
-  flatList: {
-    paddingLeft: 20,
-    marginTop: 20,
-    paddingBottom: 30,
-  },
   itemRating: {
     position: 'absolute',
-    top: 5,
-    right: 5,
+    bottom: 10,
+    right: 10,
     zIndex: 1,
     flexDirection: 'row',
   },
   itemRatingText: {
-    color: colors.secondary,
+    color: colors.red,
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: sizes.fontMedium,
     marginHorizontal: 3,
   },
+  itemLocation: {
+    position: 'absolute',
+    bottom: 40,
+    right: 10,
+    zIndex: 1,
+    flexDirection: 'row',
+  },
+  itemLocationText: {},
   itemInfor: {
     paddingVertical: 5,
     paddingHorizontal: 10,
+    flexDirection: 'column',
+    // justifyContent: 'flex-end',
   },
   itemInforName: {
-    fontSize: 12,
+    fontSize: sizes.fontLarge,
     fontWeight: 'bold',
     color: colors.primary,
   },
   itemInforPrice: {
-    fontSize: 10,
+    fontSize: sizes.fontMedium,
     fontWeight: 'bold',
     color: colors.dark,
   },

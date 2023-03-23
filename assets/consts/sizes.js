@@ -7,7 +7,7 @@ const sizes = {
   fontExtraLarge: 20,
 
   // icon sizes
-  iconTiny: 18,
+  iconTiny: 16,
   iconSmall: 28,
   iconMedium: 32,
   iconLarge: 36,

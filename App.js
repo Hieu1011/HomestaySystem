@@ -6,9 +6,9 @@ import FastBooking from './components/FastBookingScreen';
 import Rewards from './components/RewardsScreen';
 import Account from './components/AccountScreen';
 import Notification from './components/NotiScreen';
-import LoginScreen from './components/SignInScreen';
-import SignUpScreen from './components/SignUpScreen';
-
+import Login from './components/SignInScreen';
+import SignUp from './components/SignUpScreen';
+import DetailHomestay from './components/DetailHomestayScreen';
 import colors from './assets/consts/colors';
 import sizes from './assets/consts/sizes';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -140,12 +140,12 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Login"
-          component={LoginScreen}
+          component={Login}
           options={{headerShown: false}}
         />
         <Stack.Screen
           name="SignUp"
-          component={SignUpScreen}
+          component={SignUp}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -156,6 +156,11 @@ const App = () => {
         <Stack.Screen
           name="Notification"
           component={Notification}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DetailHomestay"
+          component={DetailHomestay}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
