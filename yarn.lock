@@ -6117,6 +6117,11 @@ react-native-image-slider-box@^2.0.7:
   dependencies:
     react-native-snap-carousel latest
 
+react-native-linear-gradient@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.6.2.tgz#56598a76832724b2afa7889747635b5c80948f38"
+  integrity sha512-Z8Xxvupsex+9BBFoSYS87bilNPWcRfRsGC0cpJk72Nxb5p2nEkGSBv73xZbEHnW2mUFvP+huYxrVvjZkr/gRjQ==
+
 react-native-paper@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-5.5.0.tgz#a3bf21cd5833917f0e9226b1e91189c169bad907"
