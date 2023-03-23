@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
   menuIcon: {
     height: 32,
     width: 32,
+    marginHorizontal: 5,
   },
 
   //SearchBar
@@ -330,9 +331,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   itemRatingText: {
-    color: colors.white,
+    color: colors.secondary,
     fontWeight: 'bold',
     fontSize: 15,
+    marginHorizontal: 3,
   },
   itemInfor: {
     paddingVertical: 5,
@@ -346,7 +348,7 @@ const styles = StyleSheet.create({
   itemInforPrice: {
     fontSize: 10,
     fontWeight: 'bold',
-    color: colors.darkgray,
+    color: colors.dark,
   },
 });
 export default Home;
