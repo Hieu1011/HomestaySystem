@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  SafeAreaView,
   Image,
   Alert,
 } from 'react-native';
@@ -13,6 +14,8 @@ import colors from '../assets/consts/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import linearGradient from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -44,12 +47,14 @@ export default function LoginScreen({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient style={styles.container}
+    colors={['#00204A','#005792']}>
+      <SafeAreaView style={{backgroundColor:'white',alignContent:'center',alignItems:'center',borderRadius:50}}>
       <View
-        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5}}>
+        style={{flexDirection: 'row', alignItems: 'center',marginBottom: -35}}>
         <Image
           source={images.logo}
-          style={{height: 100, width: 100, marginRight: -10}}
+          style={{height: 170, width: 170, marginRight: -10}}
           resizeMode="contain"
         />
       </View>
@@ -58,11 +63,11 @@ export default function LoginScreen({navigation}) {
           fontSize: 20,
           color: '#878787',
           fontWeight: '300',
-          marginBottom: 25,
+          marginBottom: 15,
         }}>
         Wellcome back you've been missed
       </Text>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center',marginHorizontal:20}}>
         <Icon name="envelope" size={20} marginRight={10} />
         <TextInput
           style={styles.input}
@@ -73,7 +78,7 @@ export default function LoginScreen({navigation}) {
         />
       </View>
 
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center',marginHorizontal:20}}>
         <Icon name="lock" size={24} marginRight={10} />
         <TextInput
           style={styles.input}
@@ -88,6 +93,7 @@ export default function LoginScreen({navigation}) {
           color: colors.primary,
           paddingLeft: 230,
           fontSize: 13,
+          marginHorizontal:10,
           marginBottom: 10,
         }}>
         Forgot Password ?
@@ -96,7 +102,7 @@ export default function LoginScreen({navigation}) {
         mode="contained"
         style={{
           height: 45,
-          width: '80%',
+          width: 290,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: colors.dark,
@@ -113,32 +119,50 @@ export default function LoginScreen({navigation}) {
         style={{color: 'black', fontSize: 15, marginBottom: 10, marginTop: 10}}>
         Or
       </Text>
-      <View
+      <View  style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginBottom: 100,}}>
+              <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingLeft: 15,
-          marginBottom: 120,
+          borderColor:'gray',
+          borderWidth:1,
+          alignItems:'center',
+          paddingStart:5,
+          marginHorizontal:10,
+          borderRadius:10,
         }}>
-        <Icon.Button
-          name="facebook"
-          size={24}
-          marginRight={15}
-          color="#4267B2"
-          backgroundColor="transparent"
-          onPress={() => alert('Login face')}
-        />
         <Icon.Button
           name="google"
           size={24}
-          marginRight={10}
           color="#DB4437"
           backgroundColor="transparent"
           onPress={() => alert('Login Google')}
         />
       </View>
       <View
-        style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 15}}>
+        style={{
+          borderColor:'gray',
+          borderWidth:1,
+          borderRadius:10,
+          paddingStart:10,
+          alignItems:'center',
+          marginHorizontal:10,
+
+        }}>
+        <Icon.Button
+          name="facebook"
+          size={24}
+          color="#4267B2"
+          backgroundColor="transparent"
+          onPress={() => alert('Login face')}
+        />
+      </View>
+      </View>
+
+
+      <View
+        style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 15,marginBottom:30}}>
         <Text style={{color: '#9a9a9a', fontSize: 13, marginRight: 5}}>
           Not a remember?
         </Text>
@@ -146,7 +170,8 @@ export default function LoginScreen({navigation}) {
           Register Now
         </Text>
       </View>
-    </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
