@@ -5,7 +5,7 @@ import colors from '../assets/consts/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconIoni from 'react-native-vector-icons/Ionicons';
 
-function SignUpScreen() {
+function SignUp() {
   const [email, setEmail] = useState('');
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-export default SignUpScreen;
+export default SignUp;

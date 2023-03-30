@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import linearGradient from 'react-native-linear-gradient';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function LoginScreen({navigation}) {
+export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
