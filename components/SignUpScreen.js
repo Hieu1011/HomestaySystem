@@ -7,15 +7,15 @@ import IconIoni from 'react-native-vector-icons/Ionicons';
 
 function SignUp({navigation}) {
   const [email, setEmail] = useState('');
-  const [fullname,setFullname]= useState('');
-  const[phonenumber,setphonenumber]= useState('');
-  const[password,setpassword]=useState('');
-  const[checkpassword,setcheckpassword]= useState('');
+  const [fullname, setFullname] = useState('');
+  const [phonenumber, setphonenumber] = useState('');
+  const [password, setpassword] = useState('');
+  const [checkpassword, setcheckpassword] = useState('');
 
   const backloginscreen = async () => {
     navigation.navigate('Login');
   };
-    return (
+  return (
     <View style={{flex: 1, alignItems: 'center'}}>
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.samerow}>
@@ -98,7 +98,10 @@ function SignUp({navigation}) {
       </Button>
       <View style={styles.samerow}>
         <Text style={{marginStart: 12, marginTop: 5}}> Joined us before? </Text>
-        <Text style={{color:'#00008B'}} onPress={() => backloginscreen()}> Login </Text>
+        <Text style={{color: '#00008B'}} onPress={() => backloginscreen()}>
+          {' '}
+          Login{' '}
+        </Text>
       </View>
     </View>
   );
