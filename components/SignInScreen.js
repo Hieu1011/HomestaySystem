@@ -30,6 +30,7 @@ export default function Login({navigation}) {
     if (isLoggedIn === 'true') {
     }
   };
+  const SignUp = async () =>{ navigation.navigate('SignUp')};
   const LoginIn = async () => {
     navigation.navigate('BottomTabsNavigator');
   };
