@@ -10,6 +10,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.7',
     ratingvote: '(2.1m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '2',
@@ -22,6 +38,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.6',
     ratingvote: '(2m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '3',
@@ -34,6 +66,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.0',
     ratingvote: '(1.2m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '4',
@@ -46,6 +94,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.7',
     ratingvote: '(2.4m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '5',
@@ -58,6 +122,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.7',
     ratingvote: '(2.4m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '6',
@@ -70,6 +150,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.7',
     ratingvote: '(2.4m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
   {
     id: '7',
@@ -82,6 +178,22 @@ const hotels = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit',
     rating: '4.7',
     ratingvote: '(2.4m)',
+    rooms: [
+      {
+        id: '1',
+        roomtype: 'Single Room',
+        timetype: 'Hourly',
+        price: 120,
+        condition: ['Double Bed', '18m^2', 'Window'],
+      },
+      {
+        id: '2',
+        roomtype: 'Double Room',
+        timetype: 'Hourly',
+        price: 200,
+        condition: ['Double Bed', '25m^2', 'Window'],
+      },
+    ],
   },
 ];
 

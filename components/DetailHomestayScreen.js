@@ -1,30 +1,70 @@
 import {
   ImageBackground,
   StyleSheet,
-  StatusBar,
+  Image,
   Text,
   View,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
-import React from 'react';
+import React, {useState, useRef, useMemo} from 'react';
+import FastImage from 'react-native-fast-image';
+import {SliderBox} from 'react-native-image-slider-box';
 import {ScrollView} from 'react-native-gesture-handler';
-import colors from '../assets/consts/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import BottomSheet from '@gorhom/bottom-sheet';
+
+import colors from '../assets/consts/colors';
 import sizes from '../assets/consts/sizes';
+import images from '../assets/images';
 
 const DetailHomestayScreen = ({navigation, route}) => {
-  const item = route.params;
-  console.log(item);
+  const homestay = route.params;
+  console.log(homestay);
+  const listImages = [
+    images.image1,
+    images.image2,
+    images.image3,
+    images.image4,
+  ];
 
-  const RoomItem = () => {
-    return <View />;
+  // hooks
+  const sheetRef = useRef(null);
+
+  // variables
+  const snapPoints = useMemo(() => ['5%'], []);
+
+  const RoomItem = ({item}) => {
+    return (
+      <TouchableOpacity style={styles.roomCard}>
+        <SliderBox
+          ImageComponent={FastImage}
+          images={listImages}
+          circleLoop={true}
+          parentWidth={300}
+          sliderBoxHeight={175}
+          activeOpacity={1}
+          dotStyle={styles.dotSlider}
+          dotColor={colors.light}
+          inactiveDotColor={colors.dark}
+          imageLoadingColor={colors.primary}
+          ImageComponentStyle={styles.boxImageSlider}
+        />
+
+        <Text style={styles.roomTypeText}>{item.roomtype}</Text>
+        <Text style={styles.timeTypeText}>{item.timetype}</Text>
+        <Text style={styles.priceText}>{item.price}</Text>
+        <Text style={styles.conditionText}>{item.condition}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.container}>
-      <ImageBackground source={item.image} style={styles.headerImage}>
+      <ImageBackground source={homestay.image} style={styles.headerImage}>
         <View style={styles.header}>
           <Icon
             name="arrow-back-ios"
@@ -44,8 +84,8 @@ const DetailHomestayScreen = ({navigation, route}) => {
           <Icon name="place" color={colors.white} size={sizes.iconSmall} />
         </View>
         <View style={styles.itemInfor}>
-          <Text style={styles.textName}> {item.name}</Text>
-          <Text style={styles.textLocation}> {item.location}</Text>
+          <Text style={styles.textName}> {homestay.name}</Text>
+          <Text style={styles.textLocation}> {homestay.location}</Text>
           <View
             style={{
               marginTop: 10,
@@ -74,7 +114,7 @@ const DetailHomestayScreen = ({navigation, route}) => {
           </View>
           <View style={{marginTop: 20}}>
             <Text style={{lineHeight: 20, color: colors.gray}}>
-              {item.details}
+              {homestay.details}
             </Text>
           </View>
         </View>
@@ -86,9 +126,7 @@ const DetailHomestayScreen = ({navigation, route}) => {
             paddingLeft: 20,
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-            Price per night
-          </Text>
+          <Text style={{fontSize: 20, fontWeight: 'bold'}}>Price from</Text>
           <View style={styles.priceTag}>
             <Text
               style={{
@@ -97,7 +135,7 @@ const DetailHomestayScreen = ({navigation, route}) => {
                 color: colors.grey,
                 marginLeft: 5,
               }}>
-              ${item.price}
+              ${homestay.price}
             </Text>
             <Text
               style={{
@@ -110,19 +148,24 @@ const DetailHomestayScreen = ({navigation, route}) => {
             </Text>
           </View>
         </View>
-        <RoomItem />
-        <View>
+        <FlatList
+          data={homestay.rooms}
+          vertical
+          contentContainerStyle={styles.flatList}
+          renderItem={({item}) => <RoomItem item={item} />}
+        />
+        <BottomSheet
+          ref={sheetRef}
+          detached={true}
+          enableContentPanningGesture={false}
+          enableHandlePanningGesture={false}
+          enableOverDrag={false}
+          enablePanDownToClose={true}
+          snapPoints={snapPoints}>
           <TouchableOpacity style={styles.btnBook}>
-            <Text
-              style={{
-                color: colors.white,
-                fontSize: 14,
-                fontFamily: 'Merriweather-Bold',
-              }}>
-              SELECT
-            </Text>
+            <Text style={styles.textBtn}>SELECT</Text>
           </TouchableOpacity>
-        </View>
+        </BottomSheet>
       </View>
     </ScrollView>
   );
@@ -175,6 +218,19 @@ const styles = StyleSheet.create({
     color: colors.gray,
     marginTop: 5,
   },
+
+  priceTag: {
+    height: 40,
+    alignItems: 'center',
+    marginLeft: 40,
+    paddingLeft: 20,
+    flex: 1,
+    backgroundColor: colors.light,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    flexDirection: 'row',
+  },
+
   btnBook: {
     height: 42,
     width: '60%',
@@ -186,15 +242,63 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 20,
   },
-  priceTag: {
-    height: 40,
+  textBtn: {
+    color: colors.white,
+    fontSize: 14,
+    fontFamily: 'Merriweather-Bold',
+  },
+
+  flatList: {
+    marginTop: 15,
+    paddingBottom: 30,
     alignItems: 'center',
-    marginLeft: 40,
-    paddingLeft: 20,
-    flex: 1,
-    backgroundColor: colors.light,
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-    flexDirection: 'row',
+  },
+  roomCard: {
+    height: 300,
+    width: 300,
+    alignSelf: 'center',
+    alignContent: 'center',
+    alignItems: 'stretch',
+    borderWidth: 1,
+    borderRadius: 15,
+    marginBottom: 30,
+    marginVertical: 20,
+  },
+  boxImageSlider: {
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+  dotSlider: {
+    width: 10,
+    height: 10,
+    borderRadius: 15,
+    marginHorizontal: -5,
+    marginTop: 10,
+  },
+
+  roomTypeText: {
+    fontFamily: 'Merriweather-Bold',
+    fontSize: 20,
+    color: colors.dark,
+    margin: 10,
+    marginLeft: 20,
+  },
+  timeTypeText: {
+    fontFamily: 'Merriweather-Regular',
+    fontSize: 16,
+    color: colors.black,
+    marginLeft: 20,
+  },
+  priceText: {
+    fontFamily: 'Merriweather-Regular',
+    fontSize: 16,
+    color: colors.red,
+    marginLeft: 20,
+  },
+  conditionText: {
+    fontFamily: 'Merriweather-Regular',
+    fontSize: 16,
+    color: colors.black,
+    marginLeft: 20,
   },
 });
