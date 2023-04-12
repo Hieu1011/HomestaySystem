@@ -11,7 +11,6 @@ function SignUp({navigation}) {
   const [phonenumber, setphonenumber] = useState('');
   const [password, setpassword] = useState('');
   const [checkpassword, setcheckpassword] = useState('');
-
   const backloginscreen = async () => {
     navigation.navigate('Login');
   };
