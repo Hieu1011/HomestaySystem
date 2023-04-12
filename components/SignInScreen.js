@@ -198,6 +198,7 @@ export default function Login({navigation}) {
             Not a remember?
           </Text>
           <Text style={{color: colors.primary, fontSize: 13}} onPress={SignUp}>
+
             Register Now
           </Text>
         </View>
