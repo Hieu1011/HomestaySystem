@@ -2,12 +2,16 @@ import React from 'react';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../assets/consts/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import IconAnt from 'react-native-vector-icons/AntDesign';
 import IconIont from 'react-native-vector-icons/Ionicons';
 import IconMT from 'react-native-vector-icons/MaterialIcons';
 import IconOticon from 'react-native-vector-icons/Octicons'
 
-const Account = () => {
+function Account  ({navigation}) {
+  const NotificationSettingHandal = async () => {
+    navigation.navigate('NotificationSetting');
+  };
   return (
     <ScrollView>
       <View style={{borderBottomWidth: 5.5,marginTop:5,borderBottomColor:'#e9e9e9',paddingVertical:8}}>
@@ -42,9 +46,9 @@ const Account = () => {
 
       <View>
         <Text style={styles.Title}>Settings</Text>
-        <View style={styles.Card}>
-          <IconAnt name="bells" size={24} marginHorizontal={10}></IconAnt>
-          <Text style={styles.FontCard}> Notification</Text>
+        <View style={styles.Card} >
+          <IconAnt name="bells" size={24} marginHorizontal={10} ></IconAnt>
+          <Text style={styles.FontCard} onPress={NotificationSettingHandal} > Notification</Text>
         </View>
         <View style={styles.Card}>
           <Icon name="earth" size={24} marginHorizontal={10}></Icon>
