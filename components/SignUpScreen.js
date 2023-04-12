@@ -7,15 +7,19 @@ import IconIoni from 'react-native-vector-icons/Ionicons';
 
 function SignUp({navigation}) {
   const [email, setEmail] = useState('');
+
   const [fullname, setFullname] = useState('');
   const [phonenumber, setphonenumber] = useState('');
   const [password, setpassword] = useState('');
   const [checkpassword, setcheckpassword] = useState('');
 
+
   const backloginscreen = async () => {
     navigation.navigate('Login');
   };
+
   return (
+
     <View style={{flex: 1, alignItems: 'center'}}>
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.samerow}>

@@ -34,7 +34,7 @@ export default function Login({navigation}) {
     navigation.navigate('SignUp');
   };
   const LoginIn = async () => {
-    navigation.navigate('TabNavigator');
+    navigation.navigate('BottomTabsNavigator');
   };
   const handleLogin = async () => {
     setIsLoading(true);
